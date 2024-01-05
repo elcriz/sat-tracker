@@ -61,6 +61,6 @@ app.get('*', (request, response) => {
   response.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
 
-app.listen(pocess.env.POORT || 5000, () => {
+app.listen(process.env.POORT || 5000, () => {
   console.log('Server listening at port 5000');
 });
