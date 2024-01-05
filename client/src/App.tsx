@@ -17,24 +17,27 @@ function App() {
   const dataFetch = useRef(false);
   const hasGeolocation = 'geolocation' in navigator;
 
-  const storeDefaultPosition = () => {
-    const { latitude, longitude } = config.observer;
-    setPosition({ latitude, longitude });
-  };
-
-  // Try to receive user's position from device and/or browser
-  if (hasGeolocation) {
-    navigator.geolocation.getCurrentPosition((devicePosition) => {
-      const { latitude, longitude } = devicePosition.coords;
+  // Retrieve the user's position
+  if (!position) {
+    const storeDefaultPosition = () => {
+      const { latitude, longitude } = config.observer;
       setPosition({ latitude, longitude });
-    }, (geolocationError) => {
-      storeDefaultPosition();
-      console.error(geolocationError);
-    });
-  }
+    };
 
-  if (!hasGeolocation) {
-    storeDefaultPosition();
+    if (!hasGeolocation) {
+      storeDefaultPosition();
+    }
+
+    // Try to receive user's position from device and/or browser
+    if (hasGeolocation) {
+      navigator.geolocation.getCurrentPosition((devicePosition) => {
+        const { latitude, longitude } = devicePosition.coords;
+        setPosition({ latitude, longitude });
+      }, (geolocationError) => {
+        storeDefaultPosition();
+        console.error(geolocationError);
+      });
+    }
   }
 
   useEffect(() => {
