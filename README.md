@@ -1,30 +1,5 @@
-# React + TypeScript + Vite
+# Low Earth Orbit Satellite Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple progressive web application that I can use to track LEO (Low Earth Orbit) sattellites near my location. Some of these satellites transmit freely available data on frequencies that persons on earth can receive using adequate equipment, such as a HAM transceiver or a radio scanner. Think of the International Space Station (ISS) or weather satellites (e.g. NOAA 19, NOAA 18 and NOAA 15). Data by N2YO.com.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+This is, needless to say, a work in progress, so bear with me.
