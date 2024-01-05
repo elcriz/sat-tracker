@@ -58,7 +58,7 @@ app.use(cors({
 
 app.get('*', (request, response) => {
   console.log('Serving up React build html');
-  response.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+  response.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
 });
 
 app.listen(process.env.PORT || 5000, '0.0.0.0', () => {

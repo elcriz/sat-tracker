@@ -8,12 +8,12 @@ body {
 
 main {
   height: 100vh;
-  padding: 1.2em;
+  padding: 1em;
   box-sizing: border-box;
 }
 
 header {
-  padding: 1.5em 1em 1em;
+  padding: 1.5em 1em 3em;
   margin-bottom: 2em;
   background-color: rgb(240, 200, 100);
   color: rgb(40, 42, 48);
@@ -71,9 +71,21 @@ header em::before {
 }
 
 h2 {
+  position: relative;
   color: white;
   margin-bottom: 1em;
   font-size: 1.4em;
+}
+
+h2 > span {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 2px;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  opacity: .75;
 }
 
 table {
@@ -94,10 +106,18 @@ th {
 
 th.first,
 td.first {
-  border-left: 1px solid rgb(240, 200, 100);
+  border-left: 1px solid rgb(240, 200, 100);;
+  min-width: 66px;
+}
+
+td:first-child {
+  min-width: 66px;
 }
 
 td {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  background-color: rgb(50, 52, 58);
   border-top: 1px solid rgb(90, 92, 98);
 }
 
@@ -113,6 +133,15 @@ td:first-child {
 
 td:last-child {
   border-right: 1px solid rgb(90, 92, 98);
+}
+
+td span {
+  padding-right: 4px;
+  color: rgb(140, 160, 140);
+}
+
+tr[data-today] td {
+  background-color: rgb(50, 50, 80);
 }
 
 form {
@@ -190,6 +219,7 @@ form button:focus {
   background-color: rgb(50, 52, 58);
   border-radius: .5em;
   margin-bottom: 1.5em;
+  text-align: center;
 }
 
 .pass-data__info em {
@@ -217,14 +247,18 @@ nav {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  margin-top: -4em;
+  margin-left: -1em;
+  margin-right: -1em;
   border-bottom: 1px solid rgb(240, 200, 100);
 }
 
 nav button {
   appearance: none;
-  padding: 0 1em;
+  padding: 0 1.2em;
   border: none;
   font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
+  font-weight: bold;
   height: 3em;
   background-color: rgb(50, 50, 80);
   color: rgb(240, 200, 100);
@@ -242,14 +276,16 @@ nav button:last-child {
 }
 
 nav button.is-current {
-  background-color: rgb(240, 200, 100);
-  color: rgb(50, 50, 80);
+  background-color: rgb(140, 160, 140);
+  color: rgb(40, 42, 48);
 }
 
 .reset {
   display: flex;
   gap: 1em;
   margin-top: 1em;
+  margin-left: -1em;
+  margin-right: -1em;
   padding-top: 1.5em;
   padding-bottom: 1.5em;
   justify-content: center;
