@@ -1,14 +1,24 @@
 import { Pass } from '../types';
 import { frequencies } from '../data';
 
-const today = new Date(Date.now()).toLocaleDateString();
-
 const getDateTime = (timestamp: number) => {
+  const today = new Date(Date.now()).toLocaleDateString();
   const dateTime = new Date(timestamp * 1000).toLocaleString().split(' ');
+
   if (dateTime[0] === today) {
     return ['Today', dateTime[1]];
   }
   return dateTime;
+};
+
+const getDurationMinutesSeconds = (startTimestamp: number, endTimestamp: number) => {
+  const duration = endTimestamp - startTimestamp;
+  const minutes = Math.floor(duration / 60);
+  const seconds = parseInt(((duration % 60) / 1).toFixed(0));
+
+  return seconds === 60
+    ? `${minutes + 1} m`
+    : `${minutes} m ${seconds} s`;
 };
 
 interface PassDataProps {
@@ -33,6 +43,7 @@ function PassData({ id, data, isVisible }: PassDataProps) {
               <th colSpan={3}>Start</th>
               <th className="first" colSpan={4}>Maximum altitude</th>
               <th className="first" colSpan={3}>End</th>
+              <th className="first">Totals</th>
             </tr>
             <tr>
               <th>Date</th>
@@ -47,6 +58,8 @@ function PassData({ id, data, isVisible }: PassDataProps) {
               <th className="first">Date</th>
               <th>Time</th>
               <th>Azimuth</th>
+
+              <th className="first">Duration</th>
             </tr>
           </thead>
           <tbody>
@@ -64,6 +77,8 @@ function PassData({ id, data, isVisible }: PassDataProps) {
                 <td className="first">{getDateTime(passage.endUTC)[0]}</td>
                 <td>{getDateTime(passage.endUTC)[1]}</td>
                 <td><span>{passage.endAzCompass}</span>&nbsp;{passage.endAz}°</td>
+
+                <td className="first">{getDurationMinutesSeconds(passage.startUTC, passage.endUTC)}</td>
               </tr>
             ))}
           </tbody>
