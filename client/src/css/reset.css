@@ -45,7 +45,7 @@ abbr:not(:hover) {
 body {
   background-color: rgb(40, 42, 48);
   color: rgb(240, 240, 240);
-  font: 14px/1.4em 'Roboto Condensed', Helvetica, Arial, sans-serif;
+  font: 14px/1.6em 'Roboto Condensed', Helvetica, Arial, sans-serif;
 }
 
 /* @media screen and (max-width: 440px) {

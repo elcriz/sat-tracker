@@ -7,7 +7,7 @@ interface HeaderProps {
 function Header({ children }: HeaderProps) {
   return (
       <header>
-        <h1>LEO Satellite Tracker</h1>
+        <h1>Radio Satellite Forecast</h1>
         {children}
       </header>
   );

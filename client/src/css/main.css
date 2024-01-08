@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@100;300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jockey+One&family=Roboto+Condensed:wght@300;400;500&display=swap');
 @import url('./reset.css');
 @import url('./animations.css');
 
@@ -13,17 +13,22 @@ main {
 }
 
 header {
-  padding: 1.5em 1em 3em;
+  position: relative;
+  padding: 1.5em 1em;
   margin-bottom: 2em;
   background-color: rgb(240, 200, 100);
-  color: rgb(40, 42, 48);
+  color: rgb(50, 50, 80);
   text-align: center;
   border-top-left-radius: .5em;
   border-top-right-radius: .5em;
+  z-index: 1;
 }
 
 header h1 {
   margin-bottom: .5em;
+  font-size: 32px;
+  font-family: 'Jockey One', sans-serif;
+  font-weight: 200;
 }
 
 header em {
@@ -96,7 +101,7 @@ table {
 }
 
 th, td {
-  padding: .5em 1em;
+  padding: 10px 12px;
   text-align: left;
 }
 
@@ -124,7 +129,8 @@ td {
 thead tr:first-child th {
   padding-bottom: 0;
   color: rgb(240, 200, 100);
-  font-size: larger;
+  font-size: 16px;
+  text-transform: uppercase;
 }
 
 td:first-child {
@@ -133,6 +139,11 @@ td:first-child {
 
 td:last-child {
   border-right: 1px solid rgb(90, 92, 98);
+}
+
+td.heading {
+  min-width: 75px;
+  color: rgb(240, 200, 100);
 }
 
 td span {
@@ -192,26 +203,44 @@ form button:focus {
 }
 
 .scroll-wrapper {
-  overflow: auto;
+  position: relative;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding-right: 20px;
+}
+
+.scroll-wrapper::before {
+  display: block;
+  content: '';
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  background: linear-gradient(to right, transparent, rgb(40, 42, 48));
 }
 
 .pass-data {
   transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   overflow: hidden;
   opacity: 1;
+  padding-bottom: 7.5em;
 }
 
 .pass-data.is-hidden {
   height: 0px;
   width: 0px;
+  padding: 0;
   opacity: 0;
 }
 
 .pass-data h1 {
-  margin-top: 1em;
+  margin-top: 1.5em;
   margin-bottom: 1em;
   font-size: 1.8em;
+  font-weight: 300;
   color: white;
+  text-align: center;
 }
 
 .pass-data__info {
@@ -231,10 +260,16 @@ form button:focus {
 }
 
 .source {
+  position: fixed;
+  bottom: 82px;
+  left: 0;
+  right: 0;
   display: block;
+  padding: 1em;
+  box-sizing: border-box;
+  background-color: rgb(40, 42, 48);
   text-align: center;
-  margin-top: 1.5em;
-  padding-bottom: 1.5em;
+  font-weight: 300;
   opacity: .75;
 }
 
@@ -244,13 +279,15 @@ form button:focus {
 }
 
 nav {
+  position: relative;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: flex-end;
-  margin-top: -4em;
+  margin-top: -1em;
   margin-left: -1em;
   margin-right: -1em;
-  border-bottom: 1px solid rgb(240, 200, 100);
+  z-index: 1;
 }
 
 nav button {
@@ -270,10 +307,12 @@ nav button {
 nav button:first-child {
   border-left: none;
   border-top-left-radius: .5em;
+  border-bottom-left-radius: .5em;
 }
 
 nav button:last-child {
   border-top-right-radius: .5em;
+  border-bottom-right-radius: .5em;
 }
 
 nav button.is-current {
@@ -282,16 +321,19 @@ nav button.is-current {
 }
 
 .reset {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   display: flex;
   gap: 1em;
   margin-top: 1em;
-  margin-left: -1em;
-  margin-right: -1em;
   padding-top: 1.5em;
   padding-bottom: 1.5em;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid rgb(240, 200, 100);
+  background-color: rgb(50, 52, 58);
 }
 
 .reset button {

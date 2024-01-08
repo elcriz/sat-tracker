@@ -1,4 +1,5 @@
 type Pass = {
+  id?: string;
   startAz: number;
   startAzCompass: string;
   startUTC: number;
@@ -22,6 +23,6 @@ type Passes = {
 type Position = {
   latitude: number;
   longitude: number;
-}
+};
 
 export type { Pass, Passes, Position };

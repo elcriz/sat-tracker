@@ -23,38 +23,48 @@ const getDurationMinutesSeconds = (startTimestamp: number, endTimestamp: number)
 
 const roundAzimuth = (azimuth: string | number) => {
   return Math.round(typeof azimuth === 'number' ? azimuth : parseInt(azimuth));
-}
+};
 
 interface PassDataProps {
   id: string;
   data: Pass[];
+  onSelect?: (id: string) => void;
   isVisible: boolean;
 }
 
-function PassData({ id, data, isVisible }: PassDataProps) {
+function PassData({ id, data, onSelect, isVisible }: PassDataProps) {
+  const isAll = id === 'all';
+
   const downlinks = Array.isArray(frequencies[id])
     ? frequencies[id].toString().replace(',', ' MHz, ')
     : frequencies[id];
 
   return (
     <div className={`pass-data${isVisible ? '' : ' is-hidden'}`}>
-      <h1>{id === 'ISS' ? 'International Space Station (ISS)' : id}</h1>
-      <div className="pass-data__info">
-        Downlink: <em>{downlinks} MHz</em>
-      </div>
+      <h1>
+        {id === 'ISS' ? 'International Space Station (ISS)' : isAll ? 'All receivable satellites' : id}
+      </h1>
 
-      <h2>Next passes <span>Scroll to see more &rarr;</span></h2>
+      {!isAll && (
+        <div className="pass-data__info">
+          Downlink: <em>{downlinks} MHz</em>
+        </div>
+      )}
+
+      <h2>{isAll ? 'Upcoming passes' : 'Next passes'} <span>Scroll to see more &rarr;</span></h2>
       <div className="scroll-wrapper">
         <table>
           <thead>
             <tr>
-              <th colSpan={3}>Start</th>
+              {isAll && <th />}
+              <th className={isAll ? 'first' : undefined} colSpan={3}>Start</th>
               <th className="first" colSpan={4}>Maximum altitude</th>
               <th className="first" colSpan={3}>End</th>
               <th className="first">Totals</th>
             </tr>
             <tr>
-              <th>Date</th>
+              {isAll && <th>Satellite</th>}
+              <th className={isAll ? 'first' : undefined}>Date</th>
               <th>Time</th>
               <th>Azimuth</th>
 
@@ -73,7 +83,16 @@ function PassData({ id, data, isVisible }: PassDataProps) {
           <tbody>
             {data.map((passage, index) => (
               <tr key={index} data-today={getDateTime(passage.startUTC)[0] === 'Today' || undefined}>
-                <td>{getDateTime(passage.startUTC)[0]}</td>
+                {isAll && onSelect && (
+                  <td
+                    className="heading"
+                    onClick={() => onSelect(passage.id || 'all')}
+                    role="button"
+                  >
+                    {passage.id}
+                  </td>
+                )}
+                <td className={isAll ? 'first' : undefined}>{getDateTime(passage.startUTC)[0]}</td>
                 <td>{getDateTime(passage.startUTC)[1]}</td>
                 <td><span>{passage.startAzCompass}</span>&nbsp;{roundAzimuth(passage.startAz)}°</td>
 
