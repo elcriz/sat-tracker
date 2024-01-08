@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { PassData } from './PassData';
 import { Passes, Pass } from '../types';
 import { satellites } from '../data';
@@ -20,6 +20,10 @@ function Overview({ passes }: OverviewProps) {
     }
   }, [passes]);
 
+  const handleSelect = (event: ChangeEvent<HTMLSelectElement>) => {
+    setCurrent(event.target.value);
+  };
+
   if (!passes || !upcoming) {
     return (
       <div className="no-results">
@@ -30,24 +34,15 @@ function Overview({ passes }: OverviewProps) {
 
   return (
     <div className="overview">
-      <nav>
-        <button
-          className={current === 'all' ? 'is-current' : undefined}
-          onClick={() => setCurrent('all')}
-          disabled={!upcoming}
-        >
-          All
-        </button>
-        {Object.keys(satellites).map((id) => (
-          <button
-            key={id}
-            className={id === current ? 'is-current' : undefined}
-            onClick={() => setCurrent(id)}
-          >
-            {id}
-          </button>
-        ))}
-      </nav>
+      <div className="select">
+        <select title="Select an object" value={current} onChange={handleSelect}>
+          <option>Please select an object:</option>
+          <option value="all">All satellites</option>
+          {Object.keys(satellites).map((id) => (
+            <option value={id}>{id}</option>
+          ))}
+        </select>
+      </div>
       {upcoming && (
         <PassData
           id="all"
