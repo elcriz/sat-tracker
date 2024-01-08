@@ -51,7 +51,7 @@ function PassData({ id, data, onSelect, isVisible }: PassDataProps) {
         </div>
       )}
 
-      <h2>{isAll ? 'Upcoming passes' : 'Next passes'} <span>Scroll to see more &rarr;</span></h2>
+      <h2>{isAll ? 'Upcoming passes' : 'Next passes'} <span>Scroll for more data &rarr;</span></h2>
       <div className="scroll-wrapper">
         <table>
           <thead>
