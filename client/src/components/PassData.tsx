@@ -21,6 +21,10 @@ const getDurationMinutesSeconds = (startTimestamp: number, endTimestamp: number)
     : `${minutes} m ${seconds} s`;
 };
 
+const roundAzimuth = (azimuth: string | number) => {
+  return Math.round(typeof azimuth === 'number' ? azimuth : parseInt(azimuth));
+}
+
 interface PassDataProps {
   id: string;
   data: Pass[];
@@ -71,16 +75,16 @@ function PassData({ id, data, isVisible }: PassDataProps) {
               <tr key={index} data-today={getDateTime(passage.startUTC)[0] === 'Today' || undefined}>
                 <td>{getDateTime(passage.startUTC)[0]}</td>
                 <td>{getDateTime(passage.startUTC)[1]}</td>
-                <td><span>{passage.startAzCompass}</span>&nbsp;{passage.startAz}°</td>
+                <td><span>{passage.startAzCompass}</span>&nbsp;{roundAzimuth(passage.startAz)}°</td>
 
                 <td className="first">{getDateTime(passage.maxUTC)[0]}</td>
                 <td>{getDateTime(passage.maxUTC)[1]}</td>
-                <td><span>{passage.maxAzCompass}</span>&nbsp;{passage.maxAz}°</td>
+                <td><span>{passage.maxAzCompass}</span>&nbsp;{roundAzimuth(passage.maxAz)}°</td>
                 <td>{passage.maxEl}°</td>
 
                 <td className="first">{getDateTime(passage.endUTC)[0]}</td>
                 <td>{getDateTime(passage.endUTC)[1]}</td>
-                <td><span>{passage.endAzCompass}</span>&nbsp;{passage.endAz}°</td>
+                <td><span>{passage.endAzCompass}</span>&nbsp;{roundAzimuth(passage.endAz)}°</td>
 
                 <td className="first">{getDurationMinutesSeconds(passage.startUTC, passage.endUTC)}</td>
               </tr>
