@@ -91,6 +91,7 @@ h2 > span {
   font-weight: 300;
   letter-spacing: 1px;
   opacity: .75;
+  animation: shake 4s;
 }
 
 table {
