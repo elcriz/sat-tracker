@@ -3,16 +3,18 @@ const satellites = {
   'NOAA 19': 33591,
   'NOAA 15': 25338,
   'NOAA 18': 28654,
+  'METEOR M2': 40069,
 };
 
 type Frequencies = {
-  [key: string]: number;
+  [key: string]: number | number[];
 }
 
 const frequencies: Frequencies = {
   'NOAA 19': 137.100,
   'NOAA 15': 137.620,
   'NOAA 18': 137.9125,
+  'METEOR M2': [137.100, 137.900],
   ISS: 145.800,
 };
 

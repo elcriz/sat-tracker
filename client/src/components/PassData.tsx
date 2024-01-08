@@ -2,8 +2,8 @@ import { Pass } from '../types';
 import { frequencies } from '../data';
 
 const getDateTime = (timestamp: number) => {
-  const today = new Date(Date.now()).toLocaleDateString();
-  const dateTime = new Date(timestamp * 1000).toLocaleString().split(' ');
+  const today = new Date(Date.now()).toLocaleDateString('nl-NL');
+  const dateTime = new Date(timestamp * 1000).toLocaleString('nl-NL').split(' ');
 
   if (dateTime[0] === today) {
     return ['Today', dateTime[1]];
@@ -28,11 +28,15 @@ interface PassDataProps {
 }
 
 function PassData({ id, data, isVisible }: PassDataProps) {
+  const downlinks = Array.isArray(frequencies[id])
+    ? frequencies[id].toString().replace(',', ' MHz, ')
+    : frequencies[id];
+
   return (
     <div className={`pass-data${isVisible ? '' : ' is-hidden'}`}>
       <h1>{id === 'ISS' ? 'International Space Station (ISS)' : id}</h1>
       <div className="pass-data__info">
-        Downlink: <em>{frequencies[id]} MHz</em>
+        Downlink: <em>{downlinks} MHz</em>
       </div>
 
       <h2>Next passes <span>Scroll to see more &rarr;</span></h2>
