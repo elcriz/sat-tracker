@@ -23,7 +23,7 @@ const config = {
     altitude: 10,
     latitude: 52.66, // @NOTE Defaults to Coevorden, Netherlands
     longitude: 6.74, // @NOTE Defaults to Coevorden, Netherlands
-    minElevation: 72,
+    minElevation: 70,
   },
 };
 
