@@ -7,7 +7,6 @@ A simple, experimental, progressive web application that I can use to track LEO 
 - NOAA 19 (Weather, Amateur Radio)
 - NOAA 18 (Weather, Amateur Radio)
 - NOAA 15 (Weather, Amateur Radio)
-- METEOR M2 (Weather, Amateur Radio)
 - International Space Station (ISS - Amateur Radio)
 
 This is  a work in progress, so bear with me...

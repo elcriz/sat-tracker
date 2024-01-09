@@ -13,7 +13,6 @@ type Pass = {
 };
 
 type Passes = {
-  'METEOR M2': Pass[];
   'NOAA 19': Pass[];
   'NOAA 15': Pass[];
   'NOAA 18': Pass[];
