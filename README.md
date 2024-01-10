@@ -4,9 +4,9 @@ A simple, experimental, progressive web application that I can use to track LEO 
 
 ## Current satellites
 
-- NOAA 19 (American, Weather, Amateur Radio)
-- NOAA 18 (American, Weather, Amateur Radio)
-- NOAA 15 (American, Weather, Amateur Radio)
-- METOP-B (European, Weather)
+- [NOAA 19](https://en.wikipedia.org/wiki/NOAA-19) (American, Weather, Amateur Radio)
+- [NOAA 18](https://en.wikipedia.org/wiki/NOAA-18) (American, Weather, Amateur Radio)
+- [NOAA 15](https://en.wikipedia.org/wiki/NOAA-15) (American, Weather, Amateur Radio)
+- [METOP-B](https://en.wikipedia.org/wiki/MetOp) (European, Weather)
 
 This is  a work in progress, so bear with me...
