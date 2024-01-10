@@ -10,7 +10,6 @@ const config = {
 };
 
 const satellites = {
-  ISS: 25544,
   'NOAA 19': 33591,
   'NOAA 15': 25338,
   'NOAA 18': 28654,
@@ -22,9 +21,6 @@ const downlinkData: {
     [key: string]: string | number | string[] | number[]
   };
 } = {
-  'ISS': {
-    frequencies: '145.800 MHz',
-  },
   'NOAA 15': {
     frequency: '137.620 MHz',
     service: 'NOAA APT',
