@@ -39,7 +39,7 @@ function PassData({ id, data, onSelect, isVisible }: PassDataProps) {
   return (
     <div className={`pass-data${isVisible ? '' : ' is-hidden'}`}>
       <h1>
-        {id === 'ISS' ? 'International Space Station (ISS)' : isAll ? 'All receivable satellites' : id}
+        {isAll ? 'All receivable satellites' : id}
       </h1>
 
       {!isAll && (
