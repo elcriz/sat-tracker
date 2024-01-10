@@ -1,5 +1,6 @@
+import { Fragment } from 'react';
 import { Pass } from '../types';
-import { frequencies } from '../data';
+import { downlinkData } from '../data';
 
 const getDateTime = (timestamp: number) => {
   const today = new Date(Date.now()).toLocaleDateString('nl-NL');
@@ -35,10 +36,6 @@ interface PassDataProps {
 function PassData({ id, data, onSelect, isVisible }: PassDataProps) {
   const isAll = id === 'all';
 
-  const downlinks = Array.isArray(frequencies[id])
-    ? frequencies[id].toString().replace(',', ' MHz, ')
-    : frequencies[id];
-
   return (
     <div className={`pass-data${isVisible ? '' : ' is-hidden'}`}>
       <h1>
@@ -47,7 +44,13 @@ function PassData({ id, data, onSelect, isVisible }: PassDataProps) {
 
       {!isAll && (
         <div className="pass-data__info">
-          Downlink: <em>{downlinks} MHz</em>
+          <dl>
+            {Object.keys(downlinkData[id]).map((key, index) => (
+              <Fragment key={index}>
+                <dt>{key.charAt(0).toUpperCase() + key.slice(1)}</dt><dd>{downlinkData[id][key]}</dd>
+              </Fragment>
+            ))}
+          </dl>
         </div>
       )}
 

@@ -1,23 +1,3 @@
-const satellites = {
-  ISS: 25544,
-  'NOAA 19': 33591,
-  'NOAA 15': 25338,
-  'NOAA 18': 28654,
-  'METOP-B': 38771,
-};
-
-type Frequencies = {
-  [key: string]: number | number[];
-}
-
-const frequencies: Frequencies = {
-  ISS: 145.800,
-  'NOAA 19': 137.100,
-  'NOAA 15': 137.620,
-  'NOAA 18': 137.9125,
-  'METOP-B': 137.100,
-};
-
 const cacheTimeout = 86400000; // 24 hours
 
 const config = {
@@ -29,4 +9,43 @@ const config = {
   },
 };
 
-export { satellites, frequencies, cacheTimeout, config };
+const satellites = {
+  ISS: 25544,
+  'NOAA 19': 33591,
+  'NOAA 15': 25338,
+  'NOAA 18': 28654,
+  'METOP-B': 38771,
+};
+
+const downlinkData: {
+  [key: string]: {
+    [key: string]: string | number | string[] | number[]
+  };
+} = {
+  'ISS': {
+    frequencies: '145.800 MHz',
+  },
+  'NOAA 15': {
+    frequency: '137.620 MHz',
+    service: 'NOAA APT',
+    bandwith: '+/- 34 kHz',
+  },
+  'NOAA 18': {
+    frequency: '137.9125 MHz',
+    service: 'NOAA APT',
+    bandwith: '+/- 34 kHz',
+  },
+  'NOAA 19': {
+    frequency: '137.100 MHz',
+    service: 'NOAA APT',
+    bandwith: '+/- 34 kHz',
+  },
+  'METOP-B': {
+    frequency: '137.100 MHz',
+    service: 'LRPT',
+    bandwith: '150 kHz',
+    'data rate': '72 kbps'
+  }
+};
+
+export { satellites, downlinkData, cacheTimeout, config };

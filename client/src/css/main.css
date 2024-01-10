@@ -247,16 +247,26 @@ form button:focus {
 }
 
 .pass-data__info {
+  display: flex;
+  justify-content: center;
   padding: 1em;
   background-color: rgb(50, 52, 58);
   border-radius: .5em;
   margin-bottom: 1.5em;
-  text-align: center;
 }
 
-.pass-data__info em {
-  padding-left: .5em;
-  font-style: normal;
+.pass-data__info dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  max-width: 75%;
+}
+
+.pass-data__info dt::after {
+  content: ':';
+  margin-right: 1em;
+}
+
+.pass-data__info dd {
   font-weight: bold;
   font-size: 1.05em;
   color: rgb(140, 160, 140);
