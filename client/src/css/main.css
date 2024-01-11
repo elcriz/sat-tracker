@@ -272,6 +272,28 @@ form button:focus {
   color: rgb(140, 160, 140);
 }
 
+.tracker {
+  position: relative;
+  padding-top: 2em;
+  padding-bottom: 3em;
+  border-top: 1px solid rgb(90, 92, 98);
+}
+
+.tracker__data-box {
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+}
+
+.tracker__progress-bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1em;
+  background-color: rgb(240, 200, 100);
+  border-radius: .5em;
+}
+
 .source {
   display: block;
   margin-top: .75em;
