@@ -272,6 +272,99 @@ form button:focus {
   color: rgb(140, 160, 140);
 }
 
+.tracker {
+  padding: 1em 1em 1.5em;
+  background-color: rgb(50, 50, 80);
+  border-radius: .5em;
+  margin-bottom: 1.5em;
+}
+
+.tracker h3 {
+  text-align: center;
+  color: rgb(240, 200, 100);
+  margin-bottom: 1em;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.tracker h3 span {
+  color: white;
+}
+
+.tracker__inner {
+  position: relative;
+  padding-bottom: 16px;
+}
+
+.tracker__data-box {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+  padding: 0 8px;
+}
+
+.tracker__data-box::after {
+  display: block;
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -16px;
+  width: 100%;
+  height: 16px;
+  background-color: rgb(30, 30, 60);
+  border-radius: 8px;
+}
+
+.tracker__data {
+  position: relative;
+  list-style: none;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.tracker__data:first-child {
+  text-align: left;
+}
+
+.tracker__data:last-child {
+  text-align: right;
+}
+
+.tracker__data::after {
+  position: absolute;
+  left: 50%;
+  bottom: -32px;
+  content: '';
+  display: block;
+  height: 32px;
+  border-left: 1px solid rgb(240, 200, 100);
+}
+
+.tracker__data:first-child::after {
+  left: 0;
+}
+
+.tracker__data:last-child::after {
+  left: auto;
+  right: 0;
+}
+
+.tracker__data li span {
+  padding-right: 4px;
+  color: rgb(140, 160, 140);
+}
+
+.tracker__progress-bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 16px;
+  background-color: rgb(240, 200, 100);
+  border-radius: 8px;
+}
+
 .source {
   display: block;
   margin-top: .75em;
