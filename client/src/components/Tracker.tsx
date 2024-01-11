@@ -17,7 +17,7 @@ function Tracker({ passes, id }: TrackerProps) {
 
       // Find the current most pass
       const found = passes.find((pass) => {
-        return pass.startUTC >= now && now <= pass.endUTC;
+        return (now >= pass.startUTC) && (now <= pass.endUTC);
       });
 
       // Calculate passage progress, if applicable
@@ -34,8 +34,6 @@ function Tracker({ passes, id }: TrackerProps) {
     }
   }, [passes]);
 
-  console.log({ currentPass });
-
   if (!currentPass) {
     return null;
   }
@@ -43,7 +41,7 @@ function Tracker({ passes, id }: TrackerProps) {
   return (
     <div className="tracker">
       <div className="tracker__inner">
-        {id && <h3>{id}</h3>}
+        <h3>Current passage: {id && id !== 'all' ? id : ''} <span>{progress}%</span></h3>
         <div className="tracker__data-box">
           <ul className="tracker__data tracker__data--start">
             <li>{getDateTime(currentPass.startUTC)[1]}</li>
