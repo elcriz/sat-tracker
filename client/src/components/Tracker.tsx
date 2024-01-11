@@ -34,6 +34,12 @@ function Tracker({ passes, id }: TrackerProps) {
     }
   }, [passes]);
 
+  useEffect(() => {
+    if (progress < 0 || progress > 100) {
+      setCurrentPass(undefined);
+    }
+  }, [progress])
+
   if (!currentPass) {
     return null;
   }
