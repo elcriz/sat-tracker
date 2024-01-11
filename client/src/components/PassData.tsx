@@ -20,6 +20,12 @@ function PassData({ id, data, onSelect, isVisible }: PassDataProps) {
         {isAll ? 'All receivable satellites' : id}
       </h1>
 
+      <Tracker
+        id={id}
+        passes={data}
+        onSelect={onSelect}
+      />
+
       {!isAll && (
         <div className="pass-data__info">
           <dl>
@@ -32,9 +38,7 @@ function PassData({ id, data, onSelect, isVisible }: PassDataProps) {
         </div>
       )}
 
-      <Tracker passes={data} id={id} />
-
-      <h2>{isAll ? 'Upcoming passes' : 'Next passes'} <span>Scroll for more data &rarr;</span></h2>
+      <h2>{isAll ? 'First upcoming passes' : 'Next passes'} <span>Scroll for more data &rarr;</span></h2>
       <div className="scroll-wrapper">
         <table>
           <thead>

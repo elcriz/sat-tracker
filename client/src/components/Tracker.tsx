@@ -1,19 +1,20 @@
 import { useEffect, useState } from 'react';
 import { Pass } from '../types';
-import { getPercentage, getDateTime, roundAzimuth } from '../utils';
+import { getPercentage, getDateTime, roundAzimuth, getNow } from '../utils';
 
 interface TrackerProps {
-  passes: Pass[];
   id: string;
+  passes: Pass[];
+  onSelect?: (id: string) => void;
 }
 
-function Tracker({ passes, id }: TrackerProps) {
+function Tracker({ id, passes, onSelect }: TrackerProps) {
   const [currentPass, setCurrentPass] = useState<Pass>();
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const now = Math.round(Date.now() / 1000);
+      const now = getNow();
 
       // Find the current most pass
       const found = passes.find((pass) => {
@@ -21,11 +22,10 @@ function Tracker({ passes, id }: TrackerProps) {
       });
 
       // Calculate passage progress, if applicable
-      if (found) {
-        setProgress(getPercentage(
-          (now - found.startUTC), (found.endUTC - found.startUTC)
-        ));
-      }
+      setProgress(found
+        ? getPercentage((now - found.startUTC), (found.endUTC - found.startUTC))
+        : 0
+      );
 
       setCurrentPass(found);
     }, 1000);
@@ -34,20 +34,25 @@ function Tracker({ passes, id }: TrackerProps) {
     }
   }, [passes]);
 
-  useEffect(() => {
-    if (progress < 0 || progress > 100) {
-      setCurrentPass(undefined);
-    }
-  }, [progress])
+  console.log({ passes, id });
 
-  if (!currentPass) {
-    return null;
+  if (!currentPass || progress === 0) {
+    return (
+      <div
+        className="tracker is-hidden"
+        aria-hidden="true"
+      />
+    );
   }
 
   return (
     <div className="tracker">
       <div className="tracker__inner">
-        <h3>Current pass: {id && id !== 'all' ? id : ''} <span>{progress}%</span></h3>
+        {currentPass.id && onSelect ? (
+          <h3 onClick={() => onSelect(currentPass.id || 'all')}>{currentPass.id} is currently passing</h3>
+        ) : (
+          <h3>Current pass at <span>{progress}%</span></h3>
+        )}
         <div className="tracker__data-box">
           <ul className="tracker__data tracker__data--start">
             <li>{getDateTime(currentPass.startUTC)[1]}</li>

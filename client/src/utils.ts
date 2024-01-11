@@ -25,3 +25,7 @@ export function roundAzimuth(azimuth: string | number) {
 export function getPercentage(x: number, y: number, fixed?: number): number {
   return Number(((x / y) * 100).toFixed(fixed));
 }
+
+export function getNow(): number {
+  return Math.round(Date.now() / 1000);
+}
