@@ -47,7 +47,7 @@ function Tracker({ passes, id }: TrackerProps) {
   return (
     <div className="tracker">
       <div className="tracker__inner">
-        <h3>Current passage: {id && id !== 'all' ? id : ''} <span>{progress}%</span></h3>
+        <h3>Current pass: {id && id !== 'all' ? id : ''} <span>{progress}%</span></h3>
         <div className="tracker__data-box">
           <ul className="tracker__data tracker__data--start">
             <li>{getDateTime(currentPass.startUTC)[1]}</li>
