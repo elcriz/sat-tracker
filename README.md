@@ -32,3 +32,8 @@ This is a work in progress, so bear with me.
 ## Privacy
 
 No personal (usage) data is gathered and/or used. All (cached) fetch data, your API key etc. is stored on your device and only used for fetching data from [n2yo.com](https://www.n2yo.com/).
+
+## Future roadmap
+
+- Figure out calculation of the doppler shift so it can display the correct downlink frequency during any stage of the pass
+- Add graphical information about the pass (where is the satellite from the user's point of view) to ease tracking
