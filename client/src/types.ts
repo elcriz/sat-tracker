@@ -16,7 +16,6 @@ type Passes = {
   'NOAA 19': Pass[];
   'NOAA 15': Pass[];
   'NOAA 18': Pass[];
-  'METOP-B': Pass[];
 };
 
 type Position = {

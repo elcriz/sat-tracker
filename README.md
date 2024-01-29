@@ -9,7 +9,6 @@ Data about future, interesting passes is fetched for the following satellites:
 - [NOAA 19](https://en.wikipedia.org/wiki/NOAA-19) (American, Weather, Amateur Radio)
 - [NOAA 18](https://en.wikipedia.org/wiki/NOAA-18) (American, Weather, Amateur Radio)
 - [NOAA 15](https://en.wikipedia.org/wiki/NOAA-15) (American, Weather, Amateur Radio)
-- [METOP-B](https://en.wikipedia.org/wiki/MetOp) (European, Weather)
 
 New satellites are added on an irregular basis. All data by [n2yo.com](https://www.n2yo.com/).
 

@@ -13,7 +13,6 @@ const satellites = {
   'NOAA 19': 33591,
   'NOAA 15': 25338,
   'NOAA 18': 28654,
-  'METOP-B': 38771,
 };
 
 const downlinkData: {
@@ -36,12 +35,6 @@ const downlinkData: {
     service: 'NOAA APT',
     bandwith: '+/- 34 kHz',
   },
-  'METOP-B': {
-    frequency: '137.100 MHz',
-    service: 'LRPT',
-    bandwith: '150 kHz',
-    'data rate': '72 kbps'
-  }
 };
 
 export { satellites, downlinkData, cacheTimeout, config };
